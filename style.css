@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+}
+
+.game_space {
+    width: 100vh;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+/*----- BEAUTIFUL BORDERS -----*/
+.cell:nth-child(1) {
+    border-top-left-radius: 25px;
+}
+.cell:nth-child(3) {
+    border-top-right-radius: 25px;
+}
+.cell:nth-child(7) {
+    border-bottom-left-radius: 25px;
+}
+.cell:nth-child(9) {
+    border-bottom-right-radius: 25px;
+}
+.cell:nth-child(2), .cell:nth-child(3), .cell:nth-child(5), 
+.cell:nth-child(6), .cell:nth-child(8), .cell:nth-child(9) {
+    border-left: none;
+}
+.cell:nth-child(4), .cell:nth-child(5), .cell:nth-child(6),
+.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9) {
+    border-top: none;
+}
