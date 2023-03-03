@@ -60,3 +60,10 @@ body {
 .cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9) {
     border-top: none;
 }
+
+/*----- DRAWING A CROSS ( X )-----*/
+.game_space.cross .cell:not(.zero):hover .cell:not(.cross):hover {
+    background: linear-gradient();
+}
+
+/*----- DRAWING A ZERO ( circle ) -----*/
