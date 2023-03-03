@@ -19,3 +19,11 @@ let isPlayerTurn = false
 startTheGame()
 
 restartButton.addEventListener('click', startTheGame)
+
+function startTheGame() {
+    isPlayerTurn = false
+    cellElements.forEach(cell => {
+        cell.classList.remove(playerX)
+        cell.classList.remove(playerO)
+    })
+}
