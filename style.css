@@ -61,9 +61,10 @@ body {
     border-top: none;
 }
 
-/*----- DRAWING A CROSS ( X )-----*/
-.game_space.cross .cell:not(.zero):hover .cell:not(.cross):hover {
-    background: linear-gradient();
+/*----- DRAWING A CROSS AND ZERO -----*/
+.cell:not(.zero).cross {
+    background: no-repeat center/100% url(images/cross.png);
 }
-
-/*----- DRAWING A ZERO ( circle ) -----*/
+.cell:not(.cross).zero {
+    background: no-repeat center/75% url(images/zero.png);
+}
