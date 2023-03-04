@@ -14,15 +14,15 @@ const winCombinations = [
 const cellElements = document.querySelectorAll('[cell-unit]')
 const gameSpaceElement = document.getElementById('game_space')
 const restartButton = document.getElementById('restartButton')
-let turnOfPlayerX = true
+let turnPlayerX = true
 
-startTheGame()
+startGame()
 
-restartButton.addEventListener('click', startTheGame)
+restartButton.addEventListener('click', startGame)
 
 // Start a new game and clear the previous one
-function startTheGame() {
-    turnOfPlayerX = true
+function startGame() {
+    turnPlayerX = true
     cellElements.forEach(cell => {
         cell.classList.remove(playerX)
         cell.classList.remove(playerO)
@@ -34,17 +34,26 @@ function startTheGame() {
 // Processing cell clicks and checking turn/progress/result
 function cellClick(cellElement) {
     const cell = cellElement.target
-    const currentMove = turnOfPlayerX ? playerX : playerO
+    const currentMove = turnPlayerX ? playerX : playerO
     selectedCell(cell, currentMove)
     if (checkWin(currentMove)) {
         gameOver()
-    } else if (checkForDraw()) {
+    } else if (checkDraw()) {
         gameOver()
     } else {playerTurnChange()}
 }
 
-function selectedCell() {}
+// Places X or O in a cell
+function selectedCell(cell, currentMove) {
+    cell.classList.add(currentMove)
+}
+
+// Swap turn
+function playerTurnChange() {
+    turnPlayerX = !turnPlayerX
+}
+
+
 function checkWin() {}
-function checkForDraw() {}
+function checkDraw() {}
 function gameOver() {}
-function playerTurnChange() {}
