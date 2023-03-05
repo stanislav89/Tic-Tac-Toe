@@ -37,9 +37,9 @@ function cellClick(cellElement) {
     const currentMove = turnPlayerX ? playerX : playerO
     selectedCell(cell, currentMove)
     if (checkWin(currentMove)) {
-        gameOver()
+        gameOver(false)
     } else if (checkDraw()) {
-        gameOver()
+        gameOver(true)
     } else {playerTurnChange()}
 }
 
@@ -53,7 +53,27 @@ function playerTurnChange() {
     turnPlayerX = !turnPlayerX
 }
 
+// Finish the game
+function gameOver(draw) {
+    if (draw) {
+        alert("It's a DRAW!")
+    } else {
+        alert(`Player ${turnPlayerX ? 'X' : 'O'} win!`)
+    }
+}
 
-function checkWin() {}
-function checkDraw() {}
-function gameOver() {}
+// Win check function
+function checkWin(currentMove) {
+    return winCombinations.some(combination => {
+        return combination.every(index => {
+            return cellElements[index].classList.contains(currentMove)
+        })
+    })
+}
+
+// Draw check function
+function checkDraw() {
+    return [...cellElements].every(cell => {
+        return cell.classList.contains(playerX) || cell.classList.contains(playerO)
+    })
+}
