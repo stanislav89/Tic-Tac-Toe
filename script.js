@@ -14,6 +14,8 @@ const winCombinations = [
 const cellElements = document.querySelectorAll('[cell-unit]')
 const gameSpaceElement = document.getElementById('game_space')
 const restartButton = document.getElementById('restartButton')
+const gameMessage = document.getElementById('gameMessage')
+const resultMessage = document.getElementById('resultMessage')
 let turnPlayerX = true
 
 startGame()
@@ -29,6 +31,7 @@ function startGame() {
         cell.removeEventListener('click', cellClick)
         cell.addEventListener('click', cellClick, {once: true})
     })
+    gameMessage.classList.remove('show')
 }
 
 // Processing cell clicks and checking turn/progress/result
@@ -40,7 +43,9 @@ function cellClick(cellElement) {
         gameOver(false)
     } else if (checkDraw()) {
         gameOver(true)
-    } else {playerTurnChange()}
+    } else {
+        playerTurnChange()
+    }
 }
 
 // Places X or O in a cell
@@ -56,10 +61,11 @@ function playerTurnChange() {
 // Finish the game
 function gameOver(draw) {
     if (draw) {
-        alert("It's a DRAW!")
+        resultMessage.innerText = "It's DRAW!"
     } else {
-        alert(`Player ${turnPlayerX ? 'X' : 'O'} win!`)
+        resultMessage.innerText = `Player ${turnPlayerX ? 'X' : 'O'} win!`
     }
+    gameMessage.classList.add('show')
 }
 
 // Win check function

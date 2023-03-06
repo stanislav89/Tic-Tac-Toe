@@ -22,6 +22,10 @@ body {
     cursor: pointer;
 }
 
+.cell.cross, .cell.zero {
+    cursor: not-allowed;
+}
+
 .gameButton {
     width: 100%;
     margin-top: 50px;
@@ -67,4 +71,18 @@ body {
 }
 .cell:not(.cross).zero {
     background: no-repeat center/75% url(images/zero.png);
+}
+
+/*----- RESULT MESSAGE -----*/
+.result-message {
+    background-color: lime;
+    color: black;
+    font-size: 15px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-message.show {
+    display: flex;
 }
