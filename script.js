@@ -58,7 +58,7 @@ function playerTurnChange() {
     turnPlayerX = !turnPlayerX
 }
 
-// Finish the game
+// Finish the game and disable click cells
 function gameOver(draw) {
     if (draw) {
         resultMessage.innerText = "It's DRAW!"
@@ -66,9 +66,12 @@ function gameOver(draw) {
         resultMessage.innerText = `Player ${turnPlayerX ? 'X' : 'O'} win!`
     }
     gameMessage.classList.add('show')
+    cellElements.forEach(cell => {
+        cell.removeEventListener('click', cellClick)
+    })
 }
 
-// Win check function
+// Win, if matches the winning array
 function checkWin(currentMove) {
     return winCombinations.some(combination => {
         return combination.every(index => {
@@ -77,7 +80,7 @@ function checkWin(currentMove) {
     })
 }
 
-// Draw check function
+// Draw, if all cells are not empty
 function checkDraw() {
     return [...cellElements].every(cell => {
         return cell.classList.contains(playerX) || cell.classList.contains(playerO)
